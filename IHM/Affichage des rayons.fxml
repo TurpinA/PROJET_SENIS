@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -44,10 +46,21 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="400.0" prefWidth="451.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+      <AnchorPane prefHeight="400.0" prefWidth="451.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+         <children>
+            <TableView layoutX="7.0" layoutY="49.0" prefHeight="341.0" prefWidth="430.0">
+              <columns>
+                <TableColumn prefWidth="124.80004596710205" text="Nom Rayon" />
+                <TableColumn prefWidth="96.7999267578125" text="Produits épuisés" />
+                  <TableColumn prefWidth="128.79994201660156" text="Responsable du rayon" />
+                  <TableColumn prefWidth="85.5999755859375" text="Action" />
+              </columns>
+            </TableView>
+            <Button layoutX="319.0" layoutY="13.0" mnemonicParsing="false" text="Ajouter un rayon" />
+         </children></AnchorPane>
       <AnchorPane prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: light_grey;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="571.0" layoutY="12.0" text="Alexandre Turpin" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="0.0">
+            <Label layoutX="571.0" layoutY="12.0" text="Alexandre Turpin" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="0.0">
                <graphic>
                   <ImageView fitHeight="34.0" fitWidth="36.0" preserveRatio="true">
                      <image>
@@ -56,12 +69,20 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Button layoutX="55.0" layoutY="9.0" mnemonicParsing="false" style="-fx-background-color: none;" />
-            <ImageView fitHeight="20.0" fitWidth="12.0" layoutX="584.0" layoutY="12.0" preserveRatio="true" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="15.0">
-               <image>
-                  <Image url="@icon/icons8-exit-26.png" />
-               </image>
-            </ImageView>
+            <Button layoutX="573.0" layoutY="8.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="12.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="8.0">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="12.0" preserveRatio="true">
+                     <image>
+                        <Image url="@icon/icons8-exit-26.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="77.0" layoutY="5.0" prefHeight="30.0" prefWidth="157.0" text="Stock Manager">
+               <font>
+                  <Font name="Noto Sans Bold Italic" size="20.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
