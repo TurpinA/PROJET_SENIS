@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerGestionRayon">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="150.0" style="-fx-background-color: grey;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="40.0">
          <children>
@@ -38,7 +38,7 @@
                <graphic>
                   <ImageView fitWidth="17.0" preserveRatio="true">
                      <image>
-                        <Image url="@icon/icons8-user-male-64%20(1).png" />
+                        <Image url="@icon/IconUserMale.png" />
                      </image>
                      <effect>
                         <ColorAdjust brightness="1.0" />
@@ -77,7 +77,7 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Button layoutX="573.0" layoutY="8.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="12.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="8.0">
+            <Button layoutX="573.0" layoutY="8.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="12.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="8.0" fx:id="disconnectButton" onAction="#deconnexion">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="12.0" preserveRatio="true">
                      <image>

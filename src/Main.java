@@ -10,9 +10,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader fxmlLoader = new FXMLLoader(new File("IHM/Connexion.fxml").toURI().toURL());
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("IHM/ConnexionTest.fxml").toURI().toURL());
         Parent root = fxmlLoader.load();
-        primaryStage.setTitle("TEST");
+        primaryStage.setTitle("StockManager");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
