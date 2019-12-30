@@ -1,3 +1,8 @@
+package CONTROLLER;
+
+import CONTROLLER.Connexion;
+import MODEL.Rayon;
+import MODEL.Utilisateur;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,6 +12,9 @@ import javafx.stage.Stage;
 import java.io.File;
 
 public class Main extends Application {
+
+    public static Utilisateur utilisateurConnecte = null;
+    public static Rayon rayonAffiche = null;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -18,7 +26,11 @@ public class Main extends Application {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
+
+        Connexion connexion = new Connexion();
+        connexion.setConnexion("127.0.0.1","3306","tp", "root", "");
+
         launch(args);
     }
 }

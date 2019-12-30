@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerConnexion">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.ControllerConnexion">
    <children>
       <Button fx:id="buttonConnexion" layoutX="242.0" layoutY="240.0" mnemonicParsing="false" onAction="#buttonClick" prefWidth="114.0" text="Connexion" />
       <Label layoutX="108.0" layoutY="34.0" text="Bienvenue dans Stock Manager !">
@@ -23,10 +23,10 @@
          <children>
             <ImageView opacity="0.4" preserveRatio="true">
                <image>
-                  <Image url="@icon/UserIcon.png" />
+                  <Image url="@icon/icons8-mail-24.png" />
                </image>
             </ImageView>
-            <TextField fx:id="nomUtilisateur" promptText="Nom d'utilisateur" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+            <TextField fx:id="mail" promptText="Mail" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Noto Sans Regular" size="12.0" />
                </font>
@@ -49,5 +49,10 @@
             <Insets left="10.0" />
          </padding>
       </HBox>
+      <Label fx:id="errorLabel" layoutX="208.0" layoutY="283.0" text="Mail ou Mot de passe incorrect !" textFill="RED" visible="false">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerGestionRayon">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.ControllerGestionRayon">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="150.0" style="-fx-background-color: grey;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="40.0">
          <children>
@@ -50,12 +50,12 @@
       </AnchorPane>
       <AnchorPane prefHeight="400.0" prefWidth="451.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
          <children>
-            <TableView layoutX="7.0" layoutY="49.0" prefHeight="341.0" prefWidth="430.0">
+            <TableView fx:id="tableView" layoutX="7.0" layoutY="49.0" prefHeight="341.0" prefWidth="430.0">
               <columns>
-                <TableColumn prefWidth="87.99995136260986" text="Nom Produit" />
-                <TableColumn prefWidth="62.4000244140625" text="Prix" />
-                  <TableColumn prefWidth="75.0" text="Stock" />
-                  <TableColumn prefWidth="203.2000030517578" text="Action" />
+                <TableColumn fx:id="nomProduit" prefWidth="87.99995136260986" text="Nom Produit" style="-fx-alignment: CENTER-LEFT;"/>
+                <TableColumn fx:id="prix" prefWidth="62.4000244140625" text="Prix" style="-fx-alignment: CENTER;"/>
+                 <TableColumn fx:id="stock" prefWidth="75.0" text="Stock" style="-fx-alignment: CENTER;"/>
+                 <TableColumn fx:id="Action" prefWidth="203.2000030517578" text="Action" style="-fx-alignment: CENTER;"/>
               </columns>
             </TableView>
             <MenuButton layoutX="4.0" layoutY="14.0" mnemonicParsing="false" text="Rayon Vélo">
@@ -68,7 +68,7 @@
          </children></AnchorPane>
       <AnchorPane prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: light_grey;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="571.0" layoutY="12.0" text="Alexandre Turpin" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="0.0">
+            <Label layoutX="571.0" layoutY="12.0" text="Alexandre Turpin" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="0.0" fx:id="utilisateurLabel">
                <graphic>
                   <ImageView fitHeight="34.0" fitWidth="36.0" preserveRatio="true">
                      <image>
