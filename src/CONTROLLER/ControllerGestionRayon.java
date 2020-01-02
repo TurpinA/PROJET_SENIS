@@ -22,16 +22,16 @@ import java.sql.SQLException;
 
 public class ControllerGestionRayon {
 
-    @FXML
-    private Button disconnectButton;
-    @FXML
-    private Label utilisateurLabel;
+    @FXML   private Button disconnectButton;
+    @FXML   private Button ajouterButton;
+
+    @FXML   private Label utilisateurLabel;
 
     @FXML   private TableView<Article> tableView;
     @FXML   private TableColumn<Article,String> nomProduit;
     @FXML   private TableColumn<Article,String> prix;
     @FXML   private TableColumn<Article,String> stock;
-    @FXML   private TableColumn<Article,String> action;
+    @FXML   private TableColumn<Article,String> description;
 
     @FXML
     public void initialize() throws SQLException {
@@ -39,6 +39,7 @@ public class ControllerGestionRayon {
         nomProduit.setCellValueFactory(new PropertyValueFactory<Article, String>("nom"));
         prix.setCellValueFactory(new PropertyValueFactory<Article, String>("prix"));
         stock.setCellValueFactory(new PropertyValueFactory<Article, String>("quantite"));
+        description.setCellValueFactory(new PropertyValueFactory<Article, String>("description"));
 
         tableView.getItems().setAll(MODEL.ExtractionData.rechercheAllArticleParRayon(Main.rayonAffiche));
     }
@@ -54,4 +55,40 @@ public class ControllerGestionRayon {
         window.show();
     }
 
+    public void ajouterProduit(ActionEvent actionEvent) {
+        Parent root;
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(new File("IHM/AjouterArticle.fxml").toURI().toURL());
+            root = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Ajouter un article");
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void supprimerProduit(ActionEvent actionEvent) {
+    }
+
+    public void modifierProduit(ActionEvent actionEvent) {
+
+       if(tableView.getSelectionModel().getSelectedItem() != null) {
+           ControllerModifierArticle.articleSelectione = tableView.getSelectionModel().getSelectedItem();
+
+           Parent root;
+           try {
+               FXMLLoader fxmlLoader = new FXMLLoader(new File("IHM/ModifierArticle.fxml").toURI().toURL());
+               root = fxmlLoader.load();
+               Stage stage = new Stage();
+               stage.setTitle("Modifier un article");
+               stage.setScene(new Scene(root));
+               stage.show();
+           } catch (IOException e) {
+               e.printStackTrace();
+           }
+       }
+    }
 }
