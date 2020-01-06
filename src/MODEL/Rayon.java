@@ -40,4 +40,9 @@ public class Rayon {
     public void setResponsable(Utilisateur responsable) {
         this.responsable = responsable;
     }
+
+    @Override
+    public String toString(){
+        return nom;
+    }
 }

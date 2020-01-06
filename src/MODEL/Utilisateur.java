@@ -10,6 +10,8 @@ public class Utilisateur {
     private String mail;
     private String motDePasse;
 
+    public Rayon rayon = null;
+
     public Utilisateur(){}
 
     public int getID() {
@@ -66,5 +68,18 @@ public class Utilisateur {
 
     public void setMotDePasse(String motDePasse) {
         this.motDePasse = motDePasse;
+    }
+
+    public Rayon getRayon() {
+        return rayon;
+    }
+
+    public void setRayon(Rayon rayon) {
+        this.rayon = rayon;
+    }
+
+    @Override
+    public String toString(){
+        return prenom + " " + nom;
     }
 }

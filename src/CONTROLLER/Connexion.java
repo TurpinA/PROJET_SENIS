@@ -36,6 +36,7 @@ public class Connexion {
 
 		ControllerConnexion.connexion = this;
 		ExtractionData.connexion = this;
+		ActionBD.connexion = this;
 	}
 	
 	public void stopConnexion() throws SQLException {

@@ -3,7 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.ColorAdjust?>
@@ -16,7 +15,7 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="150.0" style="-fx-background-color: grey;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="40.0">
          <children>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(74,87,111); -fx-border-style: none; -fx-background-radius: 0;" text="Rayon" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Button fx:id="rayonButton" onAction="#rayonButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(74,87,111); -fx-border-style: none; -fx-background-radius: 0;" text="Rayon" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <font>
                   <Font name="Noto Sans Regular" size="12.0" />
                </font>
@@ -31,7 +30,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(74,87,111); -fx-border-style: none; -fx-background-radius: 0;" text="Gestion utilisateur" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.0">
+            <Button fx:id="gestionUtilisateurButton" onAction="#gestionUtilisateurButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(74,87,111); -fx-border-style: none; -fx-background-radius: 0;" text="Gestion utilisateur" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.0">
                <font>
                   <Font name="Noto Sans Regular" size="12.0" />
                </font>
@@ -58,19 +57,15 @@
                   <TableColumn fx:id="description" prefWidth="197.0" style="-fx-alignment: CENTER;" text="Description" />
               </columns>
             </TableView>
-            <MenuButton fx:id="menuButton" layoutX="4.0" layoutY="14.0" mnemonicParsing="false" text="Rayon Vélo">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Rayon natation" />
-                <MenuItem mnemonicParsing="false" text="Rayon pêche" />
-              </items>
+            <MenuButton fx:id="menuButton" layoutX="4.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="136.0" text="">
             </MenuButton>
-            <Button fx:id="supprimerButton" onAction="#supprimerProduit" layoutX="360.0" layoutY="14.0" mnemonicParsing="false" text="Supprimer" />
-            <Button fx:id="modifierButton" onAction="#modifierProduit" layoutX="229.0" layoutY="14.0" mnemonicParsing="false" text="Modifier le produit" />
-            <Button fx:id="ajouterButton" onAction="#ajouterProduit" layoutX="106.0" layoutY="14.0" mnemonicParsing="false" text="Ajouter un produit" />
+            <Button fx:id="supprimerButton" layoutX="381.0" layoutY="14.0" mnemonicParsing="false" onAction="#supprimerProduit" text="Supprimer" />
+            <Button fx:id="modifierButton" layoutX="262.0" layoutY="14.0" mnemonicParsing="false" onAction="#modifierProduit" text="Modifier le produit" />
+            <Button fx:id="ajouterButton" layoutX="144.0" layoutY="14.0" mnemonicParsing="false" onAction="#ajouterProduit" text="Ajouter un produit" />
          </children></AnchorPane>
       <AnchorPane prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: light_grey;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="utilisateurLabel" layoutX="571.0" layoutY="12.0" text="Alexandre Turpin" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="0.0">
+            <Label fx:id="utilisateurLabel" onMouseClicked="#labelClick" layoutX="571.0" layoutY="12.0" text="" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="0.0">
                <graphic>
                   <ImageView fitHeight="34.0" fitWidth="36.0" preserveRatio="true">
                      <image>
@@ -79,7 +74,7 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Button fx:id="disconnectButton" layoutX="573.0" layoutY="8.0" mnemonicParsing="false" onAction="#deconnexion" prefHeight="20.0" prefWidth="12.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="8.0">
+            <Button layoutX="573.0" layoutY="8.0" mnemonicParsing="false" onAction="#deconnexion" prefHeight="20.0" prefWidth="12.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="8.0">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="12.0" preserveRatio="true">
                      <image>
