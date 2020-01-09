@@ -1,10 +1,11 @@
 # PROJET_SENIS
 
-Projet de Senis, développer une application de gestion de stock d'un magasin avec tous les test qui en découle.
+Projet de Senis, développer une application de gestion de stock d'un magasin avec tous les tests qui en découle.
 
-## Getting Started
+## A FAIRE
 
-Exemples d'interface :
-
-![alt text](https://raw.githubusercontent.com/TurpinA/PROJET_SENIS/master/IHM/app-dashboard-1x.png)
-![alt text](https://raw.githubusercontent.com/TurpinA/PROJET_SENIS/master/IHM/monstock-tableau-de-bord.png)
+TEST UNITAIRE
+TEST FONCTIONNEL
+Revoir cahier de spec mettre des petites précisions en plus
+Voir pour créer un rayon sans responsable
+Faire cahier de recette (TDD,les tests passé ceux OK et ceux KO)
