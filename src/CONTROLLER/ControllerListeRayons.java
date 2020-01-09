@@ -94,28 +94,30 @@ public class ControllerListeRayons {
     }
 
     public void modifierRayon(ActionEvent actionEvent) {
-        ControllerModifierRayon.rayonSelectione = tableView.getSelectionModel().getSelectedItem();
 
-        Parent root;
-        Stage stage = new Stage();
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(new File("IHM/ModifierRayon.fxml").toURI().toURL());
-            root = fxmlLoader.load();
-            stage.setTitle("Modifier un rayon");
-            stage.setScene(new Scene(root));
-            stage.show();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+        if(tableView.getSelectionModel().getSelectedItem() != null) {
+            ControllerModifierRayon.rayonSelectione = tableView.getSelectionModel().getSelectedItem();
 
-        stage.setOnHiding(event -> {
+            Parent root;
+            Stage stage = new Stage();
             try {
-                tableView.getItems().setAll(MODEL.ExtractionData.rechercheAllRayon());
-            } catch (SQLException e) {
+                FXMLLoader fxmlLoader = new FXMLLoader(new File("IHM/ModifierRayon.fxml").toURI().toURL());
+                root = fxmlLoader.load();
+                stage.setTitle("Modifier un rayon");
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-        });
+
+            stage.setOnHiding(event -> {
+                try {
+                    tableView.getItems().setAll(MODEL.ExtractionData.rechercheAllRayon());
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
     }
 
     public void supprimerRayon(ActionEvent actionEvent) throws SQLException {
@@ -143,4 +145,5 @@ public class ControllerListeRayons {
         window.setScene(scene);
         window.show();
     }
+
 }
