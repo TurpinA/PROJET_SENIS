@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="io.cucumber:cucumber-java:3.0.0" type="repository">
+    <properties maven-id="io.cucumber:cucumber-java:3.0.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/cucumber-java-3.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cucumber-core-3.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cucumber-html-0.2.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/gherkin-5.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/tag-expressions-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cucumber-expressions-5.0.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/datatable-1.0.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/datatable-dependencies-1.0.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
