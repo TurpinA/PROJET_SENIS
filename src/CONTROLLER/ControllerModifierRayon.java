@@ -25,6 +25,7 @@ public class ControllerModifierRayon {
     @FXML
     public void initialize() throws SQLException {
         utilisateurComboBox.getItems().addAll(MODEL.ExtractionData.rechercheAllUtilisateur());
+        utilisateurComboBox.getItems().add(null);
         nom.setText(rayonSelectione.getNom());
         utilisateurComboBox.setValue(rayonSelectione.getResponsable());
     }
@@ -38,13 +39,6 @@ public class ControllerModifierRayon {
         }
         else
             nom.setStyle("");
-
-        if(utilisateurComboBox.getValue() == null){
-            utilisateurComboBox.setStyle("-fx-border-color: red ;");
-            valide = false;
-        }
-        else
-            utilisateurComboBox.setStyle("");
 
         if(valide)
         {

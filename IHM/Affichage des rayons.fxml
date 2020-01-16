@@ -14,7 +14,7 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="150.0" style="-fx-background-color: grey;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="40.0">
          <children>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(74,87,111); -fx-border-style: none; -fx-background-radius: 0;" text="Rayon" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(252, 90, 3); -fx-border-style: none; -fx-background-radius: 0;" text="Rayon" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <font>
                   <Font name="Noto Sans Regular" size="12.0" />
                </font>

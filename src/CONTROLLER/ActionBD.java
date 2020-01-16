@@ -77,7 +77,11 @@ public class ActionBD {
     public static Rayon Createrayon(String nom, Utilisateur utilisateur) throws SQLException {
         connexion.enableConnexion();
         Statement stm1 = connexion.getConn().createStatement();
-        String sql = "INSERT INTO rayon VALUES (NULL, '"+nom+"', 1,"+ utilisateur.getID() + ");";
+        String sql;
+        if(utilisateur != null)
+            sql = "INSERT INTO rayon VALUES (NULL, '"+nom+"', 1,"+ utilisateur.getID() + ");";
+        else
+            sql = "INSERT INTO rayon VALUES (NULL, '"+nom+"', 1,NULL);";
         stm1.executeUpdate(sql);
         stm1.close();
 
@@ -146,7 +150,10 @@ public class ActionBD {
 
         while (rs.next()) {
             rs.updateString("nom",rayon.getNom());
-            rs.updateInt("utilisateur_ID",rayon.getResponsable().getID());
+            if(rayon.getResponsable() != null)
+                rs.updateInt("utilisateur_ID",rayon.getResponsable().getID());
+            else
+                rs.updateNull("utilisateur_ID");
             rs.updateRow();
         }
 

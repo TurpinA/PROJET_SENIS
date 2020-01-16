@@ -103,7 +103,7 @@ public class ExtractionData {
         connexion.enableConnexion();
         Statement stmt = connexion.getConn().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
-        ResultSet result = stmt.executeQuery("SELECT * FROM rayon INNER JOIN utilisateur ON rayon.utilisateur_ID = utilisateur.ID");
+        ResultSet result = stmt.executeQuery("SELECT * FROM rayon LEFT OUTER JOIN utilisateur ON rayon.utilisateur_ID = utilisateur.ID");
 
         while(result.next()){
             Rayon rayon = new Rayon();
@@ -111,17 +111,18 @@ public class ExtractionData {
             rayon.setNom(result.getString(2));
             rayon.setMagasin(null);
 
-            Utilisateur utilisateur = new Utilisateur();
-            utilisateur.setID(result.getInt(5));
-            utilisateur.setNom(result.getString(6));
-            utilisateur.setPrenom(result.getString(7));
-            utilisateur.setAge(result.getInt(8));
-            utilisateur.setRole(Role.valueOf(result.getString(9)));
-            utilisateur.setMail(result.getString(10));
-            utilisateur.setMotDePasse(result.getString(11));
+            if(result.getInt(5) != 0 && result.getString(6) != null && Role.valueOf(result.getString(9)) != null) {
+                Utilisateur utilisateur = new Utilisateur();
+                utilisateur.setID(result.getInt(5));
+                utilisateur.setNom(result.getString(6));
+                utilisateur.setPrenom(result.getString(7));
+                utilisateur.setAge(result.getInt(8));
+                utilisateur.setRole(Role.valueOf(result.getString(9)));
+                utilisateur.setMail(result.getString(10));
+                utilisateur.setMotDePasse(result.getString(11));
 
-            rayon.setResponsable(utilisateur);
-
+                rayon.setResponsable(utilisateur);
+            }
             rayonList.add(rayon);
         }
 

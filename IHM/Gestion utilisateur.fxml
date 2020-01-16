@@ -29,7 +29,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(74,87,111); -fx-border-style: none; -fx-background-radius: 0;" text="Gestion utilisateur" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.0">
+            <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgb(252, 90, 3); -fx-border-style: none; -fx-background-radius: 0;" text="Gestion utilisateur" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.0">
                <font>
                   <Font name="Noto Sans Regular" size="12.0" />
                </font>
@@ -62,7 +62,7 @@
          </children></AnchorPane>
       <AnchorPane prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: light_grey;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="utilisateurLabel" onMouseClicked="#labelClick" layoutX="571.0" layoutY="12.0" text="" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="0.0">
+            <Label fx:id="utilisateurLabel" layoutX="571.0" layoutY="12.0" onMouseClicked="#labelClick" text="" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="0.0">
                <graphic>
                   <ImageView fitHeight="34.0" fitWidth="36.0" preserveRatio="true">
                      <image>
