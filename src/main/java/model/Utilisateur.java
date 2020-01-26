@@ -2,7 +2,7 @@ package model;
 
 public class Utilisateur {
 
-    private int ID;
+    private int id;
     private String nom;
     private String prenom;
     private int age;
@@ -12,14 +12,12 @@ public class Utilisateur {
 
     public Rayon rayon = null;
 
-    public Utilisateur(){}
-
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNom() {

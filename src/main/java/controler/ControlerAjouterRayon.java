@@ -1,7 +1,6 @@
 package controler;
 
 import model.Utilisateur;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -24,15 +23,15 @@ public class ControlerAjouterRayon {
         utilisateurComboBox.getItems().add(null);
     }
 
-    public void annuler(ActionEvent actionEvent) {
+    public void annuler() {
         Stage stage = (Stage) annulerButton.getScene().getWindow();
         stage.close();
     }
 
-    public void ajouter(ActionEvent actionEvent) throws SQLException {
+    public void ajouter() throws SQLException {
         boolean valide = true;
 
-        if(!Pattern.matches("[A-Za-z0-9 \\-]++$", nom.getText()) || nom.getText().isEmpty()) {
+        if(!testRegexNom(nom.getText()) || nom.getText().isEmpty()) {
             nom.setStyle("-fx-border-color: red ;");
             valide = false;
         }
@@ -41,9 +40,13 @@ public class ControlerAjouterRayon {
 
         if(valide)
         {
-            controler.ActionBD.Createrayon(nom.getText(),utilisateurComboBox.getValue());
+            ActionBD.createRayon(nom.getText(),utilisateurComboBox.getValue());
             Stage stage = (Stage) ajouterButton.getScene().getWindow();
             stage.close();
         }
+    }
+
+    public boolean testRegexNom(String nom){
+        return Pattern.matches("[A-Za-z0-9 \\-]++$", nom);
     }
 }

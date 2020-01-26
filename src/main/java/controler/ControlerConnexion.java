@@ -2,7 +2,6 @@ package controler;
 
 import model.Role;
 import model.Utilisateur;
-import main.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,9 +16,12 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ControlerConnexion {
 
+    public static final String LOGGER = "logger";
     @FXML
     private Button buttonConnexion;
     @FXML
@@ -35,10 +37,10 @@ public class ControlerConnexion {
         Utilisateur utilisateur = checkConnexion(mail.getText(),motDePasse.getText());
 
         if(utilisateur != null) {
-            Main.utilisateurConnecte = utilisateur;
+            main.Main.utilisateurConnecte = utilisateur;
 
-            if(Main.utilisateurConnecte.getRole().equals(Role.Vendeur)) {
-                Main.rayonAffiche = model.ExtractionData.rechercheRayonParResponsable(utilisateur);
+            if(main.Main.utilisateurConnecte.getRole().equals(Role.VENDEUR)) {
+                main.Main.rayonAffiche = model.ExtractionData.rechercheRayonParResponsable(utilisateur);
 
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ihm/Gestion d'un rayon.fxml"));
                 Parent root = fxmlLoader.load();
@@ -66,22 +68,26 @@ public class ControlerConnexion {
 
         Utilisateur utilisateur = null;
         connexion.enableConnexion();
-        Statement stmt = connexion.getConn().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        ResultSet result = stmt.executeQuery("SELECT * FROM utilisateur WHERE email = '" + email + "' AND motdepasse = '" + motDePasse + "'");
 
-        if(result.next()){
-            utilisateur = new Utilisateur();
-            utilisateur.setID(result.getInt(1));
-            utilisateur.setNom(result.getString(2));
-            utilisateur.setPrenom(result.getString(3));
-            utilisateur.setAge(result.getInt(4));
-            utilisateur.setRole(Role.valueOf(result.getString(5)));
-            utilisateur.setMail(result.getString(6));
-            utilisateur.setMotDePasse(result.getString(7));
+        try(Statement stmt = connexion.getConn().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ResultSet result = stmt.executeQuery("SELECT * FROM utilisateur WHERE email = '" + email + "' AND motdepasse = '" + motDePasse + "'")) {
+            if (result.next()) {
+                utilisateur = new Utilisateur();
+                utilisateur.setId(result.getInt(1));
+                utilisateur.setNom(result.getString(2));
+                utilisateur.setPrenom(result.getString(3));
+                utilisateur.setAge(result.getInt(4));
+                utilisateur.setRole(Role.valueOf(result.getString(5)));
+                utilisateur.setMail(result.getString(6));
+                utilisateur.setMotDePasse(result.getString(7));
+            }
+        }
+        catch (Exception e){
+            Logger.getLogger(LOGGER).log(Level.WARNING,"",e);
         }
 
-        stmt.close();
         connexion.stopConnexion();
+
 
         return utilisateur;
     }

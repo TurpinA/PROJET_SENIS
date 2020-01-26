@@ -2,18 +2,16 @@ package model;
 
 public class Magasin {
 
-    private int ID;
+    private int id;
     private String nom;
     private String adresse;
 
-    public Magasin(){}
-
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNom() {

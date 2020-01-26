@@ -2,19 +2,17 @@ package model;
 
 public class Rayon {
 
-    private int ID;
+    private int id;
     private String nom;
     private Magasin magasin;
     private Utilisateur responsable;
 
-    public Rayon(){}
-
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNom() {

@@ -3,7 +3,6 @@ package controler;
 import model.Rayon;
 import model.Role;
 import model.Utilisateur;
-import main.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +11,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -20,10 +18,14 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ControlerGestionUtilisateur {
 
+    public static final String LOGGER = "logger";
     @FXML   private Label utilisateurLabel;
 
     @FXML   private TableView<Utilisateur> tableView;
@@ -36,7 +38,7 @@ public class ControlerGestionUtilisateur {
 
     @FXML
     public void initialize() throws SQLException {
-        utilisateurLabel.setText(Main.utilisateurConnecte.getPrenom() + " " + Main.utilisateurConnecte.getNom());
+        utilisateurLabel.setText(main.Main.utilisateurConnecte.getPrenom() + " " + main.Main.utilisateurConnecte.getNom());
 
         nomColumn.setCellValueFactory(new PropertyValueFactory<Utilisateur, String>("nom"));
         prenomColumn.setCellValueFactory(new PropertyValueFactory<Utilisateur, String>("prenom"));
@@ -50,7 +52,7 @@ public class ControlerGestionUtilisateur {
     public void setDataTableView() throws SQLException {
         listUtilisateur.clear();
 
-        ArrayList<Utilisateur> listUtilisateurTemp = model.ExtractionData.rechercheAllUtilisateur();
+        List<Utilisateur> listUtilisateurTemp = model.ExtractionData.rechercheAllUtilisateur();
         Iterator<Utilisateur> iterator = listUtilisateurTemp.iterator();
 
         while(iterator.hasNext()){
@@ -64,10 +66,10 @@ public class ControlerGestionUtilisateur {
     }
 
     public void rayonButton(ActionEvent actionEvent) throws IOException, SQLException {
-        if(Main.utilisateurConnecte.getRole().equals(Role.Vendeur)) {
-            Main.rayonAffiche = model.ExtractionData.rechercheRayonParResponsable(Main.utilisateurConnecte);
+        if(main.Main.utilisateurConnecte.getRole().equals(Role.VENDEUR)) {
+            main.Main.rayonAffiche = model.ExtractionData.rechercheRayonParResponsable(main.Main.utilisateurConnecte);
 
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ihm/Gestion d'un rayon"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ihm/Gestion d'un rayon.fxml"));
             Parent root = fxmlLoader.load();
             Scene scene = new Scene(root);
             Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -85,7 +87,7 @@ public class ControlerGestionUtilisateur {
         }
     }
 
-    public void modifierUtilisateur(ActionEvent actionEvent) {
+    public void modifierUtilisateur() {
 
         if(tableView.getSelectionModel().getSelectedItem() != null) {
             ControlerModifierUtilisateur.utilisateurSelectione = tableView.getSelectionModel().getSelectedItem();
@@ -99,7 +101,7 @@ public class ControlerGestionUtilisateur {
                 stage.setScene(new Scene(root));
                 stage.show();
             } catch (IOException e) {
-                e.printStackTrace();
+                Logger.getLogger(LOGGER).log(Level.WARNING,"",e);
             }
 
             stage.setOnHiding(event -> {
@@ -107,28 +109,30 @@ public class ControlerGestionUtilisateur {
                     setDataTableView();
                     tableView.getItems().setAll(listUtilisateur);
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    Logger.getLogger(LOGGER).log(Level.WARNING,"",e);
                 }
             });
         }
     }
 
-    public void supprimerUtilisateur(ActionEvent actionEvent) throws SQLException {
+    public void supprimerUtilisateur() throws SQLException {
         Utilisateur utilisateurASupprimer = tableView.getSelectionModel().getSelectedItem();
 
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation suppression");
-        alert.setHeaderText("Etes-vous sur de vouloir supprimer l'utilisateur : " + utilisateurASupprimer.getPrenom() + " " + utilisateurASupprimer.getNom() + " ?");
-        alert.setContentText("");
+        if(utilisateurASupprimer != null && utilisateurASupprimer.getId() != main.Main.utilisateurConnecte.getId()) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation suppression");
+            alert.setHeaderText("Etes-vous sur de vouloir supprimer l'utilisateur : " + utilisateurASupprimer.getPrenom() + " " + utilisateurASupprimer.getNom() + " ?");
+            alert.setContentText("");
 
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
-            ActionBD.supprimerUtilisateur(utilisateurASupprimer);
-            tableView.getItems().removeAll(tableView.getSelectionModel().getSelectedItems());
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                ActionBD.supprimerUtilisateur(utilisateurASupprimer);
+                tableView.getItems().removeAll(tableView.getSelectionModel().getSelectedItems());
+            }
         }
     }
 
-    public void ajouterUtilisateur(ActionEvent actionEvent) {
+    public void ajouterUtilisateur() {
         Parent root;
         Stage stage = new Stage();
         try {
@@ -139,7 +143,7 @@ public class ControlerGestionUtilisateur {
             stage.show();
         }
         catch (IOException e) {
-            e.printStackTrace();
+            Logger.getLogger(LOGGER).log(Level.WARNING,"",e);
         }
 
         stage.setOnHiding(event -> {
@@ -147,23 +151,23 @@ public class ControlerGestionUtilisateur {
                 setDataTableView();
                 tableView.getItems().setAll(listUtilisateur);
             } catch (SQLException e) {
-                e.printStackTrace();
+                Logger.getLogger(LOGGER).log(Level.WARNING,"",e);
             }
         });
     }
 
-    public void labelClick(MouseEvent mouseEvent) {
+    public void labelClick() {
         Parent root;
         Stage stage = new Stage();
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ihm/AffichageUtilisateur.fxml"));
             root = fxmlLoader.load();
-            stage.setTitle(Main.utilisateurConnecte.getPrenom() + " " + Main.utilisateurConnecte.getNom());
+            stage.setTitle(main.Main.utilisateurConnecte.getPrenom() + " " + main.Main.utilisateurConnecte.getNom());
             stage.setScene(new Scene(root));
             stage.show();
         }
         catch (IOException e) {
-            e.printStackTrace();
+            Logger.getLogger(LOGGER).log(Level.WARNING,"",e);
         }
     }
 

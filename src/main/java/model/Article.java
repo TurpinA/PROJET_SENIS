@@ -4,7 +4,7 @@ import java.io.InputStream;
 
 public class Article {
 
-    private int ID;
+    private int id;
     private String nom;
     private String reference;
     private double prix;
@@ -13,14 +13,12 @@ public class Article {
     private InputStream photo;
     private Rayon rayon;
 
-    public Article(){}
-
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNom() {

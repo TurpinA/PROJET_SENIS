@@ -3,7 +3,7 @@ package controler;
 import model.Article;
 import model.Rayon;
 import model.Role;
-import main.Main;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,18 +13,24 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
+
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Iterator;
+
+import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ControlerGestionRayon {
-    
+
+    public static final String RAYON = "Rayon ";
+    public static final String LOGGER = "logger";
     @FXML   private Button ajouterButton;
     @FXML   private Button modifierButton;
     @FXML   private Button supprimerButton;
@@ -40,33 +46,33 @@ public class ControlerGestionRayon {
 
     @FXML   private MenuButton menuButton;
 
-    @FXML   private ArrayList<Rayon> rayonList;
+    @FXML   private List<Rayon> rayonList;
 
     @FXML
     public void initialize() throws SQLException {
 
-        if(Main.utilisateurConnecte.getRole().equals(Role.Vendeur))
+        if(main.Main.utilisateurConnecte.getRole().equals(Role.VENDEUR))
             gestionUtilisateurButton.setVisible(false);
 
-        utilisateurLabel.setText(Main.utilisateurConnecte.getPrenom() + " " + Main.utilisateurConnecte.getNom());
+        utilisateurLabel.setText(main.Main.utilisateurConnecte.getPrenom() + " " + main.Main.utilisateurConnecte.getNom());
 
         nomProduit.setCellValueFactory(new PropertyValueFactory<Article, String>("nom"));
         prix.setCellValueFactory(new PropertyValueFactory<Article, String>("prix"));
         stock.setCellValueFactory(new PropertyValueFactory<Article, String>("quantite"));
         description.setCellValueFactory(new PropertyValueFactory<Article, String>("description"));
 
-        tableView.getItems().setAll(model.ExtractionData.rechercheAllArticleParRayon(Main.rayonAffiche));
+        tableView.getItems().setAll(model.ExtractionData.rechercheAllArticleParRayon(main.Main.rayonAffiche));
 
         rayonList =  model.ExtractionData.rechercheAllRayon();
 
         for(int i=0;i<rayonList.size();i++) {
-            MenuItem menuItem = new MenuItem("Rayon " + rayonList.get(i).getNom());
+            MenuItem menuItem = new MenuItem(RAYON + rayonList.get(i).getNom());
             menuButton.getItems().add(menuItem);
             menuItem.setOnAction(event1);
-            menuButton.setText("Rayon " + Main.rayonAffiche.getNom());
+            menuButton.setText(RAYON + main.Main.rayonAffiche.getNom());
         }
 
-        if(Main.utilisateurConnecte.getRole() == Role.Manager || Main.rayonAffiche.getResponsable().getID() == Main.utilisateurConnecte.getID()){
+        if(main.Main.utilisateurConnecte.getRole() == Role.MANAGER || main.Main.rayonAffiche.getResponsable().getId() == main.Main.utilisateurConnecte.getId()){
             ajouterButton.setVisible(true);
             modifierButton.setVisible(true);
             supprimerButton.setVisible(true);
@@ -90,7 +96,7 @@ public class ControlerGestionRayon {
         window.show();
     }
 
-    public void ajouterProduit(ActionEvent actionEvent) {
+    public void ajouterProduit() {
         Parent root;
         Stage stage = new Stage();
         try {
@@ -101,19 +107,19 @@ public class ControlerGestionRayon {
             stage.show();
         }
         catch (IOException e) {
-            e.printStackTrace();
+            Logger.getLogger(LOGGER).log(Level.WARNING,"",e);
         }
 
         stage.setOnHiding(event -> {
             try {
-                tableView.getItems().setAll(model.ExtractionData.rechercheAllArticleParRayon(Main.rayonAffiche));
+                tableView.getItems().setAll(model.ExtractionData.rechercheAllArticleParRayon(main.Main.rayonAffiche));
             } catch (SQLException e) {
-                e.printStackTrace();
+                Logger.getLogger(LOGGER).log(Level.WARNING,"",e);
             }
         });
     }
 
-    public void supprimerProduit(ActionEvent actionEvent) throws SQLException {
+    public void supprimerProduit() throws SQLException {
 
         Article articleASupprimer = tableView.getSelectionModel().getSelectedItem();
 
@@ -123,13 +129,13 @@ public class ControlerGestionRayon {
         alert.setContentText("");
 
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
+        if(result.isPresent() && result.get() == ButtonType.OK) {
             ActionBD.supprimerArticle(articleASupprimer);
             tableView.getItems().removeAll(tableView.getSelectionModel().getSelectedItems());
         }
     }
 
-    public void modifierProduit(ActionEvent actionEvent) {
+    public void modifierProduit() {
 
        if(tableView.getSelectionModel().getSelectedItem() != null) {
            ControlerModifierArticle.articleSelectione = tableView.getSelectionModel().getSelectedItem();
@@ -143,14 +149,14 @@ public class ControlerGestionRayon {
                stage.setScene(new Scene(root));
                stage.show();
            } catch (IOException e) {
-               e.printStackTrace();
+               Logger.getLogger(LOGGER).log(Level.WARNING,"",e);
            }
 
            stage.setOnHiding(event -> {
                try {
-                   tableView.getItems().setAll(model.ExtractionData.rechercheAllArticleParRayon(Main.rayonAffiche));
+                   tableView.getItems().setAll(model.ExtractionData.rechercheAllArticleParRayon(main.Main.rayonAffiche));
                } catch (SQLException e) {
-                   e.printStackTrace();
+                   Logger.getLogger(LOGGER).log(Level.WARNING,"",e);
                }
            });
        }
@@ -163,20 +169,20 @@ public class ControlerGestionRayon {
             Iterator<Rayon> iteratorRayonList= rayonList.iterator();
             Rayon rayonSelectionne = iteratorRayonList.next();
 
-            while(!("Rayon " + rayonSelectionne.getNom()).equals(nomRayon))
+            while(!(RAYON + rayonSelectionne.getNom()).equals(nomRayon))
                 rayonSelectionne = iteratorRayonList.next();
 
-            Main.rayonAffiche = rayonSelectionne;
+            main.Main.rayonAffiche = rayonSelectionne;
 
             try {
-                tableView.getItems().setAll(model.ExtractionData.rechercheAllArticleParRayon(Main.rayonAffiche));
+                tableView.getItems().setAll(model.ExtractionData.rechercheAllArticleParRayon(main.Main.rayonAffiche));
             } catch (SQLException ex) {
-                ex.printStackTrace();
+                Logger.getLogger(LOGGER).log(Level.WARNING,"",ex);
             }
 
-            menuButton.setText("Rayon " + Main.rayonAffiche.getNom());
+            menuButton.setText(RAYON + main.Main.rayonAffiche.getNom());
 
-            if(Main.utilisateurConnecte.getRole() == Role.Manager || Main.rayonAffiche.getResponsable().getID() == Main.utilisateurConnecte.getID()){
+            if(main.Main.utilisateurConnecte.getRole() == Role.MANAGER || main.Main.rayonAffiche.getResponsable().getId() == main.Main.utilisateurConnecte.getId()){
                 ajouterButton.setVisible(true);
                 modifierButton.setVisible(true);
                 supprimerButton.setVisible(true);
@@ -190,32 +196,32 @@ public class ControlerGestionRayon {
         }
     };
 
-    public void labelClick(MouseEvent mouseEvent) {
+    public void labelClick() {
         Parent root;
         Stage stage = new Stage();
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ihm/AffichageUtilisateur.fxml"));
             root = fxmlLoader.load();
-            stage.setTitle(Main.utilisateurConnecte.getPrenom() + " " + Main.utilisateurConnecte.getNom());
+            stage.setTitle(main.Main.utilisateurConnecte.getPrenom() + " " + main.Main.utilisateurConnecte.getNom());
             stage.setScene(new Scene(root));
             stage.show();
         }
         catch (IOException e) {
-            e.printStackTrace();
+            Logger.getLogger(LOGGER).log(Level.WARNING,"",e);
         }
     }
 
     public void rayonButton(ActionEvent actionEvent) throws SQLException, IOException {
-        if(Main.utilisateurConnecte.getRole().equals(Role.Vendeur)) {
-            Main.rayonAffiche = model.ExtractionData.rechercheRayonParResponsable(Main.utilisateurConnecte);
+        if(main.Main.utilisateurConnecte.getRole().equals(Role.VENDEUR)) {
+            main.Main.rayonAffiche = model.ExtractionData.rechercheRayonParResponsable(main.Main.utilisateurConnecte);
 
             try {
-                tableView.getItems().setAll(model.ExtractionData.rechercheAllArticleParRayon(Main.rayonAffiche));
+                tableView.getItems().setAll(model.ExtractionData.rechercheAllArticleParRayon(main.Main.rayonAffiche));
             } catch (SQLException ex) {
-                ex.printStackTrace();
+                Logger.getLogger(LOGGER).log(Level.WARNING,"",ex);
             }
 
-            menuButton.setText("Rayon " + Main.rayonAffiche.getNom());
+            menuButton.setText(RAYON + main.Main.rayonAffiche.getNom());
         }
         else
         {

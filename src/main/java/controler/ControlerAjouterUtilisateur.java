@@ -1,7 +1,6 @@
 package controler;
 
 import model.Role;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -11,6 +10,7 @@ import java.util.regex.Pattern;
 
 public class ControlerAjouterUtilisateur {
 
+    public static final String FX_BORDER_COLOR_RED = "-fx-border-color: red ;";
     @FXML   private TextField nom;
     @FXML   private TextField prenom;
     @FXML   private TextField age;
@@ -23,21 +23,21 @@ public class ControlerAjouterUtilisateur {
 
     @FXML
     public void initialize() {
-        role.getItems().addAll(Role.Manager,Role.Vendeur);
+        role.getItems().addAll(Role.MANAGER,Role.VENDEUR);
     }
 
-    public void ajouter(ActionEvent actionEvent) throws SQLException {
+    public void ajouter() throws SQLException {
         boolean champValide = testRegex();
 
         if(champValide) {
-            ActionBD.CreateUtilisateur(nom.getText(),prenom.getText(),Integer.valueOf(age.getText()),role.getValue(),mail.getText(),motdepasse.getText());
+            ActionBD.createUtilisateur(nom.getText(),prenom.getText(),Integer.valueOf(age.getText()),role.getValue(),mail.getText(),motdepasse.getText());
 
             Stage stage = (Stage) ajouterButton.getScene().getWindow();
             stage.close();
         }
     }
 
-    public void annuler(ActionEvent actionEvent) {
+    public void annuler() {
         Stage stage = (Stage) annulerButton.getScene().getWindow();
         stage.close();
     }
@@ -45,43 +45,43 @@ public class ControlerAjouterUtilisateur {
     public boolean testRegex(){
         boolean valide = true;
 
-        if(!Pattern.matches("[A-Za-z \\-]++$", nom.getText()) || nom.getText().isEmpty()) {
-            nom.setStyle("-fx-border-color: red ;");
+        if(!testRegexNom(nom.getText()) || nom.getText().isEmpty()) {
+            nom.setStyle(FX_BORDER_COLOR_RED);
             valide = false;
         }
         else
             nom.setStyle("");
 
-        if(!Pattern.matches("[A-Za-z \\-]++$", prenom.getText()) || prenom.getText().isEmpty()) {
-            prenom.setStyle("-fx-border-color: red ;");
+        if(!testRegexPrenom(prenom.getText()) || prenom.getText().isEmpty()) {
+            prenom.setStyle(FX_BORDER_COLOR_RED);
             valide = false;
         }
         else
             prenom.setStyle("");
 
-        if(!Pattern.matches("[0-9]++$", age.getText()) || age.getText().isEmpty() || Integer.valueOf(age.getText())<0) {
-            age.setStyle("-fx-border-color: red ;");
+        if(!testRegexAge(age.getText()) || age.getText().isEmpty()) {
+            age.setStyle(FX_BORDER_COLOR_RED);
             valide = false;
         }
         else
             age.setStyle("");
 
         if(role.getValue() == null) {
-            role.setStyle("-fx-border-color: red ;");
+            role.setStyle(FX_BORDER_COLOR_RED);
             valide = false;
         }
         else
             role.setStyle("");
 
-        if(!Pattern.matches("[A-Za-z0-9 @\\!\\#\\$\\%\\&\\'\\*\\+\\-\\/\\=\\?\\^\\_\\`\\.\\{\\|\\}\\~]++$", mail.getText()) || mail.getText().isEmpty() || !uniqueArobase(mail.getText())) {
-            mail.setStyle("-fx-border-color: red ;");
+        if(!testRegexMail(mail.getText()) || mail.getText().isEmpty() || !uniqueArobase(mail.getText())) {
+            mail.setStyle(FX_BORDER_COLOR_RED);
             valide = false;
         }
         else
             mail.setStyle("");
 
-        if(!Pattern.matches("[A-Za-z0-9 @\\!\\#\\$\\%\\&\\'\\*\\+\\-\\/\\=\\?\\^\\_\\`\\.\\{\\|\\}\\~]++$", motdepasse.getText()) || motdepasse.getText().isEmpty()) {
-            motdepasse.setStyle("-fx-border-color: red ;");
+        if(!testRegexMotdepasse(motdepasse.getText()) || motdepasse.getText().isEmpty()) {
+            motdepasse.setStyle(FX_BORDER_COLOR_RED);
             valide = false;
         }
         else
@@ -103,5 +103,24 @@ public class ControlerAjouterUtilisateur {
         }
 
         return vu;
+    }
+
+    public boolean testRegexNom(String nom){
+        return Pattern.matches("[A-Za-z \\-]++$", nom);
+    }
+    public boolean testRegexPrenom(String prenom){
+        return Pattern.matches("[A-Za-z \\-]++$", prenom);
+    }
+    public boolean testRegexAge(String age){
+        if(Pattern.matches("[0-9]++$", age)) {
+            return Integer.valueOf(age) >= 0;
+        }
+        return false;
+    }
+    public boolean testRegexMail(String mail){
+        return Pattern.matches("[A-Za-z0-9 @\\!\\#\\$\\%\\&\\'\\*\\+\\-\\/\\=\\?\\^\\_\\`\\.\\{\\|\\}\\~]++$", mail);
+    }
+    public boolean testRegexMotdepasse(String motdepasse){
+        return Pattern.matches("[A-Za-z0-9 @\\!\\#\\$\\%\\&\\'\\*\\+\\-\\/\\=\\?\\^\\_\\`\\.\\{\\|\\}\\~]++$", motdepasse);
     }
 }

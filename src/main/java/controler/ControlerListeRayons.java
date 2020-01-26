@@ -1,7 +1,7 @@
 package controler;
 
-import model.*;
-import main.*;
+import model.Rayon;
+import model.Utilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,16 +10,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ControlerListeRayons {
 
+    public static final String LOGGER = "logger";
     @FXML private Label utilisateurLabel;
 
     @FXML   private TableView<Rayon> tableView;
@@ -28,7 +30,7 @@ public class ControlerListeRayons {
 
     @FXML
     public void initialize() throws SQLException {
-        utilisateurLabel.setText(Main.utilisateurConnecte.getPrenom() + " " + Main.utilisateurConnecte.getNom());
+        utilisateurLabel.setText(main.Main.utilisateurConnecte.getPrenom() + " " + main.Main.utilisateurConnecte.getNom());
 
         nomColumn.setCellValueFactory(new PropertyValueFactory<Rayon, String>("nom"));
         responsableColumn.setCellValueFactory(new PropertyValueFactory<Utilisateur, String>("responsable"));
@@ -54,22 +56,22 @@ public class ControlerListeRayons {
         window.show();
     }
 
-    public void labelClick(MouseEvent mouseEvent) {
+    public void labelClick() {
         Parent root;
         Stage stage = new Stage();
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ihm/AffichageUtilisateur.fxml"));
             root = fxmlLoader.load();
-            stage.setTitle(Main.utilisateurConnecte.getPrenom() + " " + Main.utilisateurConnecte.getNom());
+            stage.setTitle(main.Main.utilisateurConnecte.getPrenom() + " " + main.Main.utilisateurConnecte.getNom());
             stage.setScene(new Scene(root));
             stage.show();
         }
         catch (IOException e) {
-            e.printStackTrace();
+            Logger.getLogger(LOGGER).log(Level.WARNING,"",e);
         }
     }
 
-    public void ajouterRayon(ActionEvent actionEvent) {
+    public void ajouterRayon() {
         Parent root;
         Stage stage = new Stage();
         try {
@@ -80,19 +82,19 @@ public class ControlerListeRayons {
             stage.show();
         }
         catch (IOException e) {
-            e.printStackTrace();
+            Logger.getLogger(LOGGER).log(Level.WARNING,"",e);
         }
 
         stage.setOnHiding(event -> {
             try {
                 tableView.getItems().setAll(model.ExtractionData.rechercheAllRayon());
             } catch (SQLException e) {
-                e.printStackTrace();
+                Logger.getLogger(LOGGER).log(Level.WARNING,"",e);
             }
         });
     }
 
-    public void modifierRayon(ActionEvent actionEvent) {
+    public void modifierRayon() {
 
         if(tableView.getSelectionModel().getSelectedItem() != null) {
             ControlerModifierRayon.rayonSelectione = tableView.getSelectionModel().getSelectedItem();
@@ -106,20 +108,20 @@ public class ControlerListeRayons {
                 stage.setScene(new Scene(root));
                 stage.show();
             } catch (IOException e) {
-                e.printStackTrace();
+                Logger.getLogger(LOGGER).log(Level.WARNING,"",e);
             }
 
             stage.setOnHiding(event -> {
                 try {
                     tableView.getItems().setAll(model.ExtractionData.rechercheAllRayon());
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    Logger.getLogger(LOGGER).log(Level.WARNING,"",e);
                 }
             });
         }
     }
 
-    public void supprimerRayon(ActionEvent actionEvent) throws SQLException {
+    public void supprimerRayon() throws SQLException {
         Rayon rayonASupprimer = tableView.getSelectionModel().getSelectedItem();
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -128,14 +130,14 @@ public class ControlerListeRayons {
         alert.setContentText("");
 
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
+        if (result.isPresent() && result.get() == ButtonType.OK){
             ActionBD.supprimerRayon(rayonASupprimer);
             tableView.getItems().removeAll(tableView.getSelectionModel().getSelectedItems());
         }
     }
 
     public void accederRayon(ActionEvent actionEvent) throws SQLException, IOException {
-        Main.rayonAffiche = model.ExtractionData.rechercheRayonParID(tableView.getSelectionModel().getSelectedItem().getID());
+        main.Main.rayonAffiche = model.ExtractionData.rechercheRayonParID(tableView.getSelectionModel().getSelectedItem().getId());
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ihm/Gestion d'un rayon.fxml"));
         Parent root = fxmlLoader.load();

@@ -1,13 +1,12 @@
 package controler;
 
-import model.*;
-import javafx.event.ActionEvent;
+import model.Rayon;
+import model.Utilisateur;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import model.Rayon;
 
 import java.sql.SQLException;
 import java.util.regex.Pattern;
@@ -29,10 +28,10 @@ public class ControlerModifierRayon {
         utilisateurComboBox.setValue(rayonSelectione.getResponsable());
     }
 
-    public void modifier(ActionEvent actionEvent) throws SQLException {
+    public void modifier() throws SQLException {
         boolean valide = true;
 
-        if(!Pattern.matches("[A-Za-z0-9 \\-]++$", nom.getText()) || nom.getText().isEmpty()) {
+        if(!testRegexNom(nom.getText()) || nom.getText().isEmpty()) {
             nom.setStyle("-fx-border-color: red ;");
             valide = false;
         }
@@ -43,17 +42,21 @@ public class ControlerModifierRayon {
         {
             Rayon rayon = new Rayon();
             rayon.setNom(nom.getText());
-            rayon.setID(rayonSelectione.getID());
+            rayon.setId(rayonSelectione.getId());
             rayon.setMagasin(rayonSelectione.getMagasin());
             rayon.setResponsable(utilisateurComboBox.getValue());
-            controler.ActionBD.modifierRayon(rayon);
+            ActionBD.modifierRayon(rayon);
             Stage stage = (Stage) modifierButton.getScene().getWindow();
             stage.close();
         }
     }
 
-    public void annuler(ActionEvent actionEvent) {
+    public void annuler() {
         Stage stage = (Stage) annulerButton.getScene().getWindow();
         stage.close();
+    }
+
+    public boolean testRegexNom(String nom){
+        return Pattern.matches("[A-Za-z0-9 \\-]++$", nom);
     }
 }

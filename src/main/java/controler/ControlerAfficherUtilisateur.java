@@ -1,10 +1,7 @@
 package controler;
 
-import main.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-
-import java.sql.SQLException;
 
 public class ControlerAfficherUtilisateur {
 
@@ -15,12 +12,12 @@ public class ControlerAfficherUtilisateur {
     @FXML   private Label mail;
 
     @FXML
-    public void initialize() throws SQLException {
-        nomPrenom.setText(Main.utilisateurConnecte.getPrenom() + " " + Main.utilisateurConnecte.getNom());
-        id.setText(String.valueOf(Main.utilisateurConnecte.getID()));
-        age.setText(String.valueOf(Main.utilisateurConnecte.getAge()));
-        role.setText(String.valueOf(Main.utilisateurConnecte.getRole()));
-        mail.setText(Main.utilisateurConnecte.getMail());
+    public void initialize(){
+        nomPrenom.setText(main.Main.utilisateurConnecte.getPrenom() + " " + main.Main.utilisateurConnecte.getNom());
+        id.setText(String.valueOf(main.Main.utilisateurConnecte.getId()));
+        age.setText(String.valueOf(main.Main.utilisateurConnecte.getAge()));
+        role.setText(String.valueOf(main.Main.utilisateurConnecte.getRole()));
+        mail.setText(main.Main.utilisateurConnecte.getMail());
 
     }
 }

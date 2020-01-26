@@ -1,20 +1,20 @@
 package controler;
 
-import model.*;
-import javafx.event.ActionEvent;
+import model.Role;
+import model.Utilisateur;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import model.Utilisateur;
 
 import java.sql.SQLException;
 import java.util.regex.Pattern;
 
 public class ControlerModifierUtilisateur {
 
+    public static final String FX_BORDER_COLOR_RED = "-fx-border-color: red ;";
     public static Utilisateur utilisateurSelectione;
 
     @FXML   private TextField nom;
@@ -29,7 +29,7 @@ public class ControlerModifierUtilisateur {
 
     @FXML
     public void initialize() {
-        role.getItems().addAll(Role.Manager,Role.Vendeur);
+        role.getItems().addAll(Role.MANAGER,Role.VENDEUR);
         nom.setText(utilisateurSelectione.getNom());
         prenom.setText(utilisateurSelectione.getPrenom());
         age.setText(String.valueOf(utilisateurSelectione.getAge()));
@@ -38,12 +38,12 @@ public class ControlerModifierUtilisateur {
         motdepasse.setText(utilisateurSelectione.getMotDePasse());
     }
 
-    public void modifier(ActionEvent actionEvent) throws SQLException {
+    public void modifier() throws SQLException {
         boolean champValide = testRegex();
 
         if(champValide) {
             Utilisateur utilisateur = new Utilisateur();
-            utilisateur.setID(utilisateurSelectione.getID());
+            utilisateur.setId(utilisateurSelectione.getId());
             utilisateur.setNom(nom.getText());
             utilisateur.setMotDePasse(motdepasse.getText());
             utilisateur.setMail(mail.getText());
@@ -57,7 +57,7 @@ public class ControlerModifierUtilisateur {
         }
     }
 
-    public void annuler(ActionEvent actionEvent) {
+    public void annuler() {
         Stage stage = (Stage) annulerButton.getScene().getWindow();
         stage.close();
     }
@@ -65,43 +65,43 @@ public class ControlerModifierUtilisateur {
     public boolean testRegex(){
         boolean valide = true;
 
-        if(!Pattern.matches("[A-Za-z \\-]++$", nom.getText()) || nom.getText().isEmpty()) {
-            nom.setStyle("-fx-border-color: red ;");
+        if(!testRegexNom(nom.getText()) || nom.getText().isEmpty()) {
+            nom.setStyle(FX_BORDER_COLOR_RED);
             valide = false;
         }
         else
             nom.setStyle("");
 
-        if(!Pattern.matches("[A-Za-z \\-]++$", prenom.getText()) || prenom.getText().isEmpty()) {
-            prenom.setStyle("-fx-border-color: red ;");
+        if(!testRegexPrenom(prenom.getText()) || prenom.getText().isEmpty()) {
+            prenom.setStyle(FX_BORDER_COLOR_RED);
             valide = false;
         }
         else
             prenom.setStyle("");
 
-        if(!Pattern.matches("[0-9]++$", age.getText()) || age.getText().isEmpty() || Integer.valueOf(age.getText())<0) {
-            age.setStyle("-fx-border-color: red ;");
+        if(!testRegexAge(age.getText()) || age.getText().isEmpty()) {
+            age.setStyle(FX_BORDER_COLOR_RED);
             valide = false;
         }
         else
             age.setStyle("");
 
         if(role.getValue() == null) {
-            role.setStyle("-fx-border-color: red ;");
+            role.setStyle(FX_BORDER_COLOR_RED);
             valide = false;
         }
         else
             role.setStyle("");
 
-        if(!Pattern.matches("[A-Za-z0-9 @\\!\\#\\$\\%\\&\\'\\*\\+\\-\\/\\=\\?\\^\\_\\`\\.\\{\\|\\}\\~]++$", mail.getText()) || mail.getText().isEmpty() || !uniqueArobase(mail.getText())) {
-            mail.setStyle("-fx-border-color: red ;");
+        if(!testRegexMail(mail.getText()) || mail.getText().isEmpty() || !uniqueArobase(mail.getText())) {
+            mail.setStyle(FX_BORDER_COLOR_RED);
             valide = false;
         }
         else
             mail.setStyle("");
 
-        if(!Pattern.matches("[A-Za-z0-9 @\\!\\#\\$\\%\\&\\'\\*\\+\\-\\/\\=\\?\\^\\_\\`\\.\\{\\|\\}\\~]++$", motdepasse.getText()) || motdepasse.getText().isEmpty()) {
-            motdepasse.setStyle("-fx-border-color: red ;");
+        if(!testRegexMotdepasse(motdepasse.getText()) || motdepasse.getText().isEmpty()) {
+            motdepasse.setStyle(FX_BORDER_COLOR_RED);
             valide = false;
         }
         else
@@ -123,5 +123,24 @@ public class ControlerModifierUtilisateur {
         }
 
         return vu;
+    }
+
+    public boolean testRegexNom(String nom){
+        return Pattern.matches("[A-Za-z \\-]++$", nom);
+    }
+    public boolean testRegexPrenom(String prenom){
+        return Pattern.matches("[A-Za-z \\-]++$", prenom);
+    }
+    public boolean testRegexAge(String age){
+        if(Pattern.matches("[0-9]++$", age)) {
+            return Integer.valueOf(age) >= 0;
+        }
+        return false;
+    }
+    public boolean testRegexMail(String mail){
+        return Pattern.matches("[A-Za-z0-9 @\\!\\#\\$\\%\\&\\'\\*\\+\\-\\/\\=\\?\\^\\_\\`\\.\\{\\|\\}\\~]++$", mail);
+    }
+    public boolean testRegexMotdepasse(String motdepasse){
+        return Pattern.matches("[A-Za-z0-9 @\\!\\#\\$\\%\\&\\'\\*\\+\\-\\/\\=\\?\\^\\_\\`\\.\\{\\|\\}\\~]++$", motdepasse);
     }
 }

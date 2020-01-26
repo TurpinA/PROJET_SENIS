@@ -1,0 +1,6 @@
+projectKey=senisProjet
+serverUrl=http://localhost:9000
+serverVersion=7.9.2.30863
+dashboardUrl=http://localhost:9000/dashboard?id=senisProjet
+ceTaskId=AW_jI_C3f8C2KMxIJDtU
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AW_jI_C3f8C2KMxIJDtU

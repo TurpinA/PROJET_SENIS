@@ -9,10 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.util.Locale;
-import java.util.ResourceBundle;
-
 public class Main extends Application {
 
     public static Utilisateur utilisateurConnecte = null;
@@ -31,7 +27,7 @@ public class Main extends Application {
     public static void main(String[] args){
 
         Connexion connexion = new Connexion();
-        connexion.setConnexion("127.0.0.1","3306","tp", "root", "");
+        connexion.setConnexion("127.0.0.1","3306","tp", "root", "",connexion);
 
         launch(args);
     }
