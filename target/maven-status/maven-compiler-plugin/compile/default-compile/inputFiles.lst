@@ -1,21 +1,21 @@
-C:\Users\alexa\Documents\GitHub\PROJET_SENIS\src\main\java\controler\ControlerConnexion.java
-C:\Users\alexa\Documents\GitHub\PROJET_SENIS\src\main\java\model\Magasin.java
-C:\Users\alexa\Documents\GitHub\PROJET_SENIS\src\main\java\controler\ControlerAjouterUtilisateur.java
-C:\Users\alexa\Documents\GitHub\PROJET_SENIS\src\main\java\controler\ControlerModifierUtilisateur.java
-C:\Users\alexa\Documents\GitHub\PROJET_SENIS\src\main\java\controler\ControlerModifierArticle.java
-C:\Users\alexa\Documents\GitHub\PROJET_SENIS\src\main\java\controler\ActionBD.java
-C:\Users\alexa\Documents\GitHub\PROJET_SENIS\src\main\java\main\Main.java
-C:\Users\alexa\Documents\GitHub\PROJET_SENIS\src\main\java\model\Article.java
-C:\Users\alexa\Documents\GitHub\PROJET_SENIS\src\main\java\model\Utilisateur.java
-C:\Users\alexa\Documents\GitHub\PROJET_SENIS\src\main\java\controler\ControlerAjouterRayon.java
-C:\Users\alexa\Documents\GitHub\PROJET_SENIS\src\main\java\controler\ControlerGestionUtilisateur.java
-C:\Users\alexa\Documents\GitHub\PROJET_SENIS\src\main\java\model\Rayon.java
-C:\Users\alexa\Documents\GitHub\PROJET_SENIS\src\main\java\model\Role.java
-C:\Users\alexa\Documents\GitHub\PROJET_SENIS\src\main\java\controler\ControlerListeRayons.java
-C:\Users\alexa\Documents\GitHub\PROJET_SENIS\src\main\java\controler\ControlerAfficherUtilisateur.java
-C:\Users\alexa\Documents\GitHub\PROJET_SENIS\src\main\java\controler\ControlerAjouterArticle.java
-C:\Users\alexa\Documents\GitHub\PROJET_SENIS\src\main\java\main\NewMain.java
-C:\Users\alexa\Documents\GitHub\PROJET_SENIS\src\main\java\controler\ControlerGestionRayon.java
-C:\Users\alexa\Documents\GitHub\PROJET_SENIS\src\main\java\model\ExtractionData.java
-C:\Users\alexa\Documents\GitHub\PROJET_SENIS\src\main\java\controler\Connexion.java
-C:\Users\alexa\Documents\GitHub\PROJET_SENIS\src\main\java\controler\ControlerModifierRayon.java
+D:\OneDrive - Université de Tours\Document\Polytech\Archive\4AS1\Conduite de projet\Senis François\PROJET_SENIS\src\main\java\controler\ControlerAfficherUtilisateur.java
+D:\OneDrive - Université de Tours\Document\Polytech\Archive\4AS1\Conduite de projet\Senis François\PROJET_SENIS\src\main\java\controler\ControlerAjouterUtilisateur.java
+D:\OneDrive - Université de Tours\Document\Polytech\Archive\4AS1\Conduite de projet\Senis François\PROJET_SENIS\src\main\java\model\Role.java
+D:\OneDrive - Université de Tours\Document\Polytech\Archive\4AS1\Conduite de projet\Senis François\PROJET_SENIS\src\main\java\controler\ActionBD.java
+D:\OneDrive - Université de Tours\Document\Polytech\Archive\4AS1\Conduite de projet\Senis François\PROJET_SENIS\src\main\java\controler\ControlerGestionRayon.java
+D:\OneDrive - Université de Tours\Document\Polytech\Archive\4AS1\Conduite de projet\Senis François\PROJET_SENIS\src\main\java\controler\ControlerListeRayons.java
+D:\OneDrive - Université de Tours\Document\Polytech\Archive\4AS1\Conduite de projet\Senis François\PROJET_SENIS\src\main\java\controler\ControlerModifierRayon.java
+D:\OneDrive - Université de Tours\Document\Polytech\Archive\4AS1\Conduite de projet\Senis François\PROJET_SENIS\src\main\java\controler\ControlerModifierArticle.java
+D:\OneDrive - Université de Tours\Document\Polytech\Archive\4AS1\Conduite de projet\Senis François\PROJET_SENIS\src\main\java\controler\ControlerAjouterRayon.java
+D:\OneDrive - Université de Tours\Document\Polytech\Archive\4AS1\Conduite de projet\Senis François\PROJET_SENIS\src\main\java\model\Rayon.java
+D:\OneDrive - Université de Tours\Document\Polytech\Archive\4AS1\Conduite de projet\Senis François\PROJET_SENIS\src\main\java\controler\ControlerConnexion.java
+D:\OneDrive - Université de Tours\Document\Polytech\Archive\4AS1\Conduite de projet\Senis François\PROJET_SENIS\src\main\java\model\Magasin.java
+D:\OneDrive - Université de Tours\Document\Polytech\Archive\4AS1\Conduite de projet\Senis François\PROJET_SENIS\src\main\java\model\Utilisateur.java
+D:\OneDrive - Université de Tours\Document\Polytech\Archive\4AS1\Conduite de projet\Senis François\PROJET_SENIS\src\main\java\controler\Connexion.java
+D:\OneDrive - Université de Tours\Document\Polytech\Archive\4AS1\Conduite de projet\Senis François\PROJET_SENIS\src\main\java\controler\ControlerGestionUtilisateur.java
+D:\OneDrive - Université de Tours\Document\Polytech\Archive\4AS1\Conduite de projet\Senis François\PROJET_SENIS\src\main\java\controler\ControlerModifierUtilisateur.java
+D:\OneDrive - Université de Tours\Document\Polytech\Archive\4AS1\Conduite de projet\Senis François\PROJET_SENIS\src\main\java\model\ExtractionData.java
+D:\OneDrive - Université de Tours\Document\Polytech\Archive\4AS1\Conduite de projet\Senis François\PROJET_SENIS\src\main\java\controler\ControlerAjouterArticle.java
+D:\OneDrive - Université de Tours\Document\Polytech\Archive\4AS1\Conduite de projet\Senis François\PROJET_SENIS\src\main\java\main\EmbeddedMain.java
+D:\OneDrive - Université de Tours\Document\Polytech\Archive\4AS1\Conduite de projet\Senis François\PROJET_SENIS\src\main\java\main\Main.java
+D:\OneDrive - Université de Tours\Document\Polytech\Archive\4AS1\Conduite de projet\Senis François\PROJET_SENIS\src\main\java\model\Article.java
