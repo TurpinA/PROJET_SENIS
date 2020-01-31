@@ -34,17 +34,6 @@ public class GestionUtilisateurTest {
     //|pivot    |bernard|54  |VENDEUR |bernard.pivot@outlook.fr |password     | 2              |
     //|sinclard |paul   |68  |VENDEUR |paul.sinclard@outlook.fr |password     | 3              |
 
-    @Before
-    public void beforeScenario() throws SQLException, FileNotFoundException {
-        String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/?serverTimezone=UTC&useSSL=false";
-        Connection con = DriverManager.getConnection(mysqlUrl, "root", "");
-        ScriptRunner sr = new ScriptRunner(con);
-        sr.setLogWriter(null);
-        Reader reader = new BufferedReader(new FileReader("src/main/resources/sql/baseTest.sql"));
-        sr.runScript(reader);
-        Connexion connexion = new Connexion();
-        connexion.setConnexion("127.0.0.1","3306","baseTest", "root", "",connexion);
-    }
 
     @Given("un utilisateur :")
     public void un_utilisateur(io.cucumber.datatable.DataTable dataTable) {
@@ -72,7 +61,6 @@ public class GestionUtilisateurTest {
 
     @Then("Je vérifie les entrées et j'ajoute l'utilisateur à la base de donnée")
     public void je_vérifie_les_entrées_et_j_ajoute_l_utilisateur_à_la_base_de_donnée() throws SQLException {
-        ArrayList<String> idlist = new ArrayList<>();
         ExtractUtilisateur = ExtractionData.rechercheAllUtilisateur();
         assertEquals(ExtractUtilisateur.size(), 3);
 
