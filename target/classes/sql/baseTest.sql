@@ -44,6 +44,8 @@ CREATE TABLE `magasin` (
   `adresse` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+INSERT INTO `magasin` (`ID`, `nom`, `adresse`) VALUES
+(1, 'Decathelon', '2 rue du cerisier');
 
 --
 -- Table structure for table `rayon`

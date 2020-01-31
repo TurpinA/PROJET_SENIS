@@ -1,16 +1,14 @@
 package main;
 
+import controler.ActionBD;
+
 import controler.Connexion;
-import controler.ControlerAjouterRayon;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import model.Magasin;
-import model.Rayon;
-import model.Role;
-import model.Utilisateur;
+import model.*;
 import org.apache.ibatis.jdbc.ScriptRunner;
+import org.junit.Before;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -21,43 +19,67 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import static org.junit.Assert.assertNotNull;
 
 public class GestionRayonTest {
 
-    private List<Utilisateur>  ArrayListRayon = new ArrayList<>();
-    private List<Utilisateur> ExtractRayon;
+    private List<Rayon>  ArrayListRayon = new ArrayList<>();
+    private List<Rayon> ExtractRayon = new ArrayList<>();
 
-    //|nom      |magasin |responsable|
-    //|Natation      |Magasin1    |Roger  |
-    //|Tennis    |Magasin1|Adrien  |
-    //|Equitation |Magasin1   |Yoann  |
+    //|nom  |responsable|
+    //|Natation      |Roger  |
+    //|Tennis    |Adrien  |
+    //|Equitation |Yoann  |
+
+    @Given("un rayon :")
+    public void un_rayon(io.cucumber.datatable.DataTable dataTable) throws SQLException {
+        List<Map<String,String>> list = dataTable.asMaps(String.class, String.class);
+        for (Map<String, String> map :
+                list) {
+
+            Utilisateur utilisateur = new Utilisateur();
+            utilisateur.setNom(map.get("responsable"));
+            utilisateur.setPrenom("");
+            utilisateur.setAge(0);
+            utilisateur.setRole(Role.MANAGER);
+            utilisateur.setMail("");
+            utilisateur.setMotDePasse("");
+
+            ActionBD.createUtilisateur(utilisateur.getNom(), utilisateur.getPrenom(), utilisateur.getAge(), utilisateur.getRole(), utilisateur.getMail(), utilisateur.getMotDePasse());
+
+            Rayon rayon = new Rayon();
+            rayon.setNom(map.get("nom"));
+            rayon.setResponsable(utilisateur);
+
+            ArrayListRayon.add(rayon);
+        }
+    }
+    @When("je clique sur le bouton ajouter un rayon")
+    public void je_clique_sur_le_bouton_ajouter_un_rayon() throws SQLException {
+        for (Rayon rayon : ArrayListRayon) {
+            ExtractRayon.add(ActionBD.createRayon(rayon.getNom(),rayon.getResponsable()));
+        }
+    }
+    @Then("Je vérifie les entrées et j'ajoute le rayon à la base de donnée")
+    public void je_vérifie_les_entrées_et_j_ajoute_le_rayon_à_la_base_de_donnée() throws SQLException {
+        for (Rayon rayon : ExtractRayon) {
+            assertNotNull(model.ExtractionData.rechercheRayonParID(rayon.getId()));
+            assertNotNull(model.ExtractionData.rechercheRayonParNom(rayon.getNom()));
+        }
+    }
+
 
     @Before
-    public void beforeScenario() throws SQLException, FileNotFoundException {
+    public void viderTables() throws SQLException, FileNotFoundException {
         String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/?serverTimezone=UTC&useSSL=false";
         Connection con = DriverManager.getConnection(mysqlUrl, "root", "");
         ScriptRunner sr = new ScriptRunner(con);
         sr.setLogWriter(null);
-        Reader reader = new BufferedReader(new FileReader("src/main/resources/sql/baseTest.sql"));
+        Reader reader = new BufferedReader(new FileReader("src/main/resources/sql/viderLaBase.sql"));
         sr.runScript(reader);
-        Connexion connexion = new Connexion();
-        connexion.setConnexion("127.0.0.1","3306","baseTest", "root", "",connexion);
     }
-
-    @Given("un rayon :")
-    public void un_rayon(io.cucumber.datatable.DataTable dataTable) throws SQLException {
-
-    }
-    @When("je clique sur le bouton ajouter un rayon")
-    public void je_clique_sur_le_bouton_ajouter_un_rayon() throws SQLException {
-        throw new io.cucumber.java.PendingException();
-    }
-    @Then("Je vérifie les entrées et j'ajoute le rayon à la base de donnée")
-    public void je_vérifie_les_entrées_et_j_ajoute_le_rayon_à_la_base_de_donnée() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
     @Given("un rayon sélectionné à supprimer :")
     public void un_rayon_sélectionné_à_supprimer(io.cucumber.datatable.DataTable dataTable) {
 

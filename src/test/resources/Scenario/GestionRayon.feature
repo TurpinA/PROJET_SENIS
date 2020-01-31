@@ -5,10 +5,10 @@ Feature: Gestion des rayons
 
   Scenario: Ajout d'un rayon
     Given un rayon :
-      |nom      |magasin |responsable|
-      |Natation      |Magasin1    |Roger  |
-      |Tennis    |Magasin1|Adrien  |
-      |Equitation |Magasin1   |Yoann  |
+      |nom      |responsable|
+      |Natation      |Roger  |
+      |Tennis    |Adrien  |
+      |Equitation |Yoann  |
     When je clique sur le bouton ajouter un rayon
     Then Je vérifie les entrées et j'ajoute le rayon à la base de donnée
 

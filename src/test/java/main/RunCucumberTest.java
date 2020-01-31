@@ -1,7 +1,6 @@
 package main;
 
 import controler.Connexion;
-import io.cucumber.java.Before;
 import io.cucumber.junit.CucumberOptions;
 import io.cucumber.junit.Cucumber;
 import org.apache.ibatis.jdbc.ScriptRunner;

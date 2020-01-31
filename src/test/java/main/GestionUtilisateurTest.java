@@ -1,23 +1,11 @@
 package main;
 
 import controler.ActionBD;
-import controler.Connexion;
-import controler.ControlerAjouterArticle;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
-import model.ExtractionData;
 import model.Role;
 import model.Utilisateur;
-import org.apache.ibatis.jdbc.ScriptRunner;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.Reader;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +15,7 @@ import static org.junit.Assert.*;
 public class GestionUtilisateurTest {
 
     private List<Utilisateur>  ArrayListUtilisateur = new ArrayList<>();
-    private List<Utilisateur> ExtractUtilisateur;
+    private List<Utilisateur> ExtractUtilisateur = new ArrayList<>();
 
     //|nom      |prenom |age |role    |email                    |mot de passe | id (generated) |
     //|tem      |bob    |18  |MANAGER |bob@outlook.fr           |password     | 1              |
@@ -53,17 +41,17 @@ public class GestionUtilisateurTest {
 
     @When("je clique sur le bouton ajouter un utilisateur")
     public void je_clique_sur_le_bouton_ajouter_un_utilisateur() throws SQLException {
-        for (Utilisateur utilisateur :
-                ArrayListUtilisateur) {
-            ActionBD.createUtilisateur(utilisateur.getNom(), utilisateur.getPrenom(), utilisateur.getAge(), utilisateur.getRole(), utilisateur.getMail(), utilisateur.getMotDePasse());
+        for (Utilisateur utilisateur : ArrayListUtilisateur) {
+            ExtractUtilisateur.add(ActionBD.createUtilisateur(utilisateur.getNom(), utilisateur.getPrenom(), utilisateur.getAge(), utilisateur.getRole(), utilisateur.getMail(), utilisateur.getMotDePasse()));
         }
     }
 
     @Then("Je vérifie les entrées et j'ajoute l'utilisateur à la base de donnée")
     public void je_vérifie_les_entrées_et_j_ajoute_l_utilisateur_à_la_base_de_donnée() throws SQLException {
-        ExtractUtilisateur = ExtractionData.rechercheAllUtilisateur();
-        assertEquals(ExtractUtilisateur.size(), 3);
-
+        for (Utilisateur utilisateur : ExtractUtilisateur) {
+            assertNotNull(model.ExtractionData.rechercheUtilisateurParID(utilisateur.getId()));
+            assertNotNull(model.ExtractionData.rechercheUtilisateurParMail(utilisateur.getMail()));
+        }
     }
 
 }
