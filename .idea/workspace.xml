@@ -2,56 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62283704-5719-42ab-8125-330551fd84a4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/main/EmbeddedMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/main/GestionUtilisateurTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/main/RunCucumberTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/Scenario/GestionUtilisateur.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_senis.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/PROJET_SENIS.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controler/ActionBD.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controler/ActionBD.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controler/Connexion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controler/Connexion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controler/ControlerAfficherUtilisateur.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controler/ControlerAfficherUtilisateur.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controler/ControlerAjouterArticle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controler/ControlerAjouterArticle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controler/ControlerAjouterRayon.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controler/ControlerAjouterRayon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controler/ControlerAjouterUtilisateur.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controler/ControlerAjouterUtilisateur.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controler/ControlerConnexion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controler/ControlerConnexion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controler/ControlerGestionRayon$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controler/ControlerGestionRayon$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controler/ControlerGestionRayon.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controler/ControlerGestionRayon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controler/ControlerGestionUtilisateur.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controler/ControlerGestionUtilisateur.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controler/ControlerListeRayons.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controler/ControlerListeRayons.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controler/ControlerModifierArticle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controler/ControlerModifierArticle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controler/ControlerModifierRayon.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controler/ControlerModifierRayon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controler/ControlerModifierUtilisateur.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controler/ControlerModifierUtilisateur.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ihm/Affichage des rayons.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ihm/Affichage des rayons.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ihm/AffichageUtilisateur.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ihm/AffichageUtilisateur.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ihm/AjouterArticle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ihm/AjouterArticle.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ihm/AjouterRayon.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ihm/AjouterRayon.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ihm/AjouterUtilisateur.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ihm/AjouterUtilisateur.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ihm/ConnexionTest.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ihm/ConnexionTest.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ihm/Gestion d'un rayon.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ihm/Gestion d'un rayon.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ihm/Gestion utilisateur.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ihm/Gestion utilisateur.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ihm/ModifierArticle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ihm/ModifierArticle.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ihm/ModifierRayon.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ihm/ModifierRayon.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ihm/ModifierUtilisateur.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ihm/ModifierUtilisateur.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Article.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Article.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/ExtractionData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/ExtractionData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Magasin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Magasin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Rayon.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Rayon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Role.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Utilisateur.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Utilisateur.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sql/tp.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sql/tp.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/sonar/.sonar_lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/sonar/report-task.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/main/GestionUtilisateurTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/main/GestionUtilisateurTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/main/RunCucumberTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/main/RunCucumberTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/Scenario/GestionUtilisateur.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/Scenario/GestionUtilisateur.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,8 +105,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.RunCucumberTest" />
-        <item itemvalue="Cucumber.js.GestionUtilisateur.feature" />
         <item itemvalue="Application.EmbeddedMain" />
+        <item itemvalue="Cucumber.js.GestionUtilisateur.feature" />
       </list>
     </recent_temporary>
   </component>
@@ -170,8 +124,16 @@
       <workItem from="1580151011527" duration="5205000" />
       <workItem from="1580229279331" duration="2108000" />
       <workItem from="1580403741940" duration="139000" />
-      <workItem from="1580404055130" duration="4095000" />
+      <workItem from="1580404055130" duration="7365000" />
     </task>
+    <task id="LOCAL-00001" summary="Ajout des tests cucumbers à completer">
+      <created>1580412234389</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1580412234389</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,6 +152,10 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Ajout des tests cucumbers à completer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout des tests cucumbers à completer" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="552" y="179" key="#Project_Structure" timestamp="1580229352542">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -205,6 +171,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="708" y="324" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1580231528492" />
+    <state x="390" y="115" key="CommitChangelistDialog2" timestamp="1580412231797">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="390" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1580412231797" />
     <state x="92" y="-988" width="1736" height="856" key="DiffContextDialog" timestamp="1580142473655">
       <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
@@ -214,29 +184,33 @@
     </state>
     <state x="740" y="-866" key="FileChooserDialogImpl/0.0.1920.1040/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1580150943115" />
     <state x="740" y="214" key="FileChooserDialogImpl/0.0.1920.1040/0.-1080.1920.1040@0.0.1920.1040" timestamp="1580154437092" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1580410958268">
+    <state x="820" y="444" key="Github.Dialog.Accounts.Choose" timestamp="1580412242006">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="820" y="444" key="Github.Dialog.Accounts.Choose/0.0.1920.1040@0.0.1920.1040" timestamp="1580412242006" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1580469583485">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="483" key="GridCell.Tab.0.bottom/0.0.1920.1040/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1580150895864" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/0.-1080.1920.1040@0.0.1920.1040" timestamp="1580159437728" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/0.-1080.1920.1040@0.0.1920.1040" timestamp="1580469583485" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1580410958268" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1580410958268">
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1580469583485">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="483" key="GridCell.Tab.0.center/0.0.1920.1040/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1580150895864" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/0.-1080.1920.1040@0.0.1920.1040" timestamp="1580159437728" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/0.-1080.1920.1040@0.0.1920.1040" timestamp="1580469583485" />
     <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1580410958268" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1580410958267">
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1580469583485">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="483" key="GridCell.Tab.0.left/0.0.1920.1040/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1580150895864" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/0.-1080.1920.1040@0.0.1920.1040" timestamp="1580159437728" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/0.-1080.1920.1040@0.0.1920.1040" timestamp="1580469583485" />
     <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1580410958267" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1580410958268">
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1580469583485">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="483" key="GridCell.Tab.0.right/0.0.1920.1040/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1580150895864" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/0.-1080.1920.1040@0.0.1920.1040" timestamp="1580159437728" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/0.-1080.1920.1040@0.0.1920.1040" timestamp="1580469583485" />
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1580410958268" />
     <state width="1877" height="305" key="GridCell.Tab.1.bottom" timestamp="1580145657553">
       <screen x="0" y="-1080" width="1920" height="1040" />
@@ -260,15 +234,20 @@
     <state x="440" y="-985" key="SettingsEditor/0.0.1920.1040/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1580150986510" />
     <state x="440" y="95" key="SettingsEditor/0.0.1920.1040/0.-1080.1920.1040@0.0.1920.1040" timestamp="1580151232995" />
     <state x="440" y="95" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1580408658516" />
+    <state x="552" y="254" key="Vcs.Push.Dialog.v2" timestamp="1580412236509">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="254" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1580412236509" />
     <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1580408571074">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="656" y="-735" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1580151011562" />
     <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580408571074" />
-    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580412203891">
+    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580470598420">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="769" y="-642" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1580142526933" />
+    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/0.-1080.1920.1040@0.0.1920.1040" timestamp="1580470598420" />
     <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1580412203891" />
     <state x="591" y="65" width="737" height="909" key="find.popup" timestamp="1580408849673">
       <screen x="0" y="0" width="1920" height="1040" />
