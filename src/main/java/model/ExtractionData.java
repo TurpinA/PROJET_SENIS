@@ -272,7 +272,11 @@ public class ExtractionData {
             Logger.getLogger(LOGGER).log(Level.WARNING,"",e);
         }
         connexion.stopConnexion();
+        if(utilisateur.getId() == 0){
+            return null;
+        }else{
+            return utilisateur;
+        }
 
-        return utilisateur;
     }
 }

@@ -10,10 +10,15 @@ public class Utilisateur {
     private String mail;
     private String motDePasse;
 
-    public void Utilisateur(String nom, String prenom, int age, String mail, String motDePasse){
+    public Utilisateur(){
+
+    }
+
+    public Utilisateur(String nom, String prenom, Role role, int age, String mail, String motDePasse){
         this.nom = nom;
         this.prenom = prenom;
         this.age = age;
+        this.role = role;
         this.mail = mail;
         this.motDePasse = motDePasse;
     }
