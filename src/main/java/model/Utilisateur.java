@@ -10,6 +10,14 @@ public class Utilisateur {
     private String mail;
     private String motDePasse;
 
+    public void Utilisateur(String nom, String prenom, int age, String mail, String motDePasse){
+        this.nom = nom;
+        this.prenom = prenom;
+        this.age = age;
+        this.mail = mail;
+        this.motDePasse = motDePasse;
+    }
+
     public Rayon rayon = null;
 
     public int getId() {

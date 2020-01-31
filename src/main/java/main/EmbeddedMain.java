@@ -12,13 +12,6 @@ import java.sql.SQLException;
 
 public class EmbeddedMain {
     public static void main(String[] args) throws FileNotFoundException, SQLException {
-
-        String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/?serverTimezone=UTC";
-        Connection con = DriverManager.getConnection(mysqlUrl, "root", "");
-        ScriptRunner sr = new ScriptRunner(con);
-        Reader reader = new BufferedReader(new FileReader("src/main/resources/sql/baseTest.sql"));
-        sr.runScript(reader);
-
         Main.main(args);
     }
 }
