@@ -62,7 +62,7 @@ public class Connexion {
 	public void enableConnexion() {
 
 		try {
-			conn = DriverManager.getConnection("jdbc:mysql://"+ adress + ":" + port + "/" + base + "?serverTimezone=UTC", user, password);
+			conn = DriverManager.getConnection("jdbc:mysql://"+ adress + ":" + port + "/" + base + "?serverTimezone=UTC&useSSL=false", user, password);
 		} catch (SQLException ex2) {
 			Logger.getLogger("logger").log(Level.WARNING,"",ex2);
 			System.exit(1);

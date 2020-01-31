@@ -36,9 +36,10 @@ public class GestionUtilisateurTest {
 
     @Before
     public void beforeScenario() throws SQLException, FileNotFoundException {
-        String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/?serverTimezone=UTC";
+        String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/?serverTimezone=UTC&useSSL=false";
         Connection con = DriverManager.getConnection(mysqlUrl, "root", "");
         ScriptRunner sr = new ScriptRunner(con);
+        sr.setLogWriter(null);
         Reader reader = new BufferedReader(new FileReader("src/main/resources/sql/baseTest.sql"));
         sr.runScript(reader);
         Connexion connexion = new Connexion();
