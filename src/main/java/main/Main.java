@@ -8,6 +8,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.apache.ibatis.jdbc.ScriptRunner;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.Reader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Main extends Application {
 
@@ -24,11 +33,13 @@ public class Main extends Application {
     }
 
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws SQLException, FileNotFoundException {
 
         Connexion connexion = new Connexion();
         connexion.setConnexion("127.0.0.1","3306","tp", "root", "",connexion);
 
         launch(args);
+
+        DriverManager.registerDriver(new com.mysql.jdbc.Driver());
     }
 }
