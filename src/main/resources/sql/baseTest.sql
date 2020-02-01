@@ -101,9 +101,6 @@ ALTER TABLE `rayon`
 ALTER TABLE `utilisateur`
   ADD PRIMARY KEY (`ID`);
 
---
--- AUTO_INCREMENT for dumped tables
---
 
 --
 -- AUTO_INCREMENT for table `article`

@@ -42,12 +42,13 @@ public class ExtractionData {
 
     public static Rayon rechercheRayonParID(int rayonID) throws SQLException {
 
-        Rayon rayon = rayon = new Rayon();
+        Rayon rayon = null;
         connexion.enableConnexion();
 
         try(Statement stmt = connexion.getConn().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             ResultSet result = stmt.executeQuery("SELECT * FROM rayon INNER JOIN utilisateur ON rayon.utilisateur_ID = utilisateur.ID WHERE rayon.ID = " + rayonID)) {
             if (result.next()) {
+                rayon = new Rayon();
                 rayon.setId(result.getInt(1));
                 rayon.setNom(result.getString(2));
                 rayon.setMagasin(null);
@@ -74,12 +75,13 @@ public class ExtractionData {
 
     public static Rayon rechercheRayonParNom(String rayonNom) throws SQLException {
 
-        Rayon rayon = rayon = new Rayon();
+        Rayon rayon = null;
         connexion.enableConnexion();
 
         try(Statement stmt = connexion.getConn().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             ResultSet result = stmt.executeQuery("SELECT * FROM rayon INNER JOIN utilisateur ON rayon.utilisateur_ID = utilisateur.ID WHERE rayon.nom = '" + rayonNom + "'")) {
             if (result.next()) {
+                rayon = new Rayon();
                 rayon.setId(result.getInt(1));
                 rayon.setNom(result.getString(2));
                 rayon.setMagasin(null);
@@ -133,14 +135,15 @@ public class ExtractionData {
         return articleList;
     }
 
-    public static Article rechercheArticleParNom(String reference) throws SQLException {
+    public static Article rechercheArticleParReference(String reference) throws SQLException {
 
-        Article article = new Article();
+        Article article = null;
         connexion.enableConnexion();
 
         try(Statement stmt = connexion.getConn().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             ResultSet result = stmt.executeQuery("SELECT * FROM article INNER JOIN rayon ON article.rayon_ID = rayon.ID WHERE article.reference = '" + reference + "'")) {
             if(result.next()) {
+                article = new Article();
                 article.setId(result.getInt(1));
                 article.setNom(result.getString(2));
                 article.setReference(result.getString(3));
@@ -148,7 +151,11 @@ public class ExtractionData {
                 article.setQuantite(result.getInt(5));
                 article.setDescription(result.getString(6));
                 article.setPhoto(null);
-                Rayon rayon = rechercheRayonParID(result.getInt(9));
+
+                Rayon rayon = new Rayon();
+                rayon.setId(result.getInt(9));
+                rayon.setNom(result.getString(10));
+
                 article.setRayon(rayon);
             }
         }
@@ -228,12 +235,13 @@ public class ExtractionData {
 
     public static Utilisateur rechercheUtilisateurParMail(String mail) throws SQLException {
 
-        Utilisateur utilisateur = new Utilisateur();
+        Utilisateur utilisateur = null;
         connexion.enableConnexion();
 
         try(Statement stmt = connexion.getConn().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             ResultSet result = stmt.executeQuery("SELECT * FROM utilisateur WHERE email = '" + mail + "'")) {
             if(result.next()) {
+                utilisateur = new Utilisateur();
                 utilisateur.setId(result.getInt(1));
                 utilisateur.setNom(result.getString(2));
                 utilisateur.setPrenom(result.getString(3));
@@ -253,12 +261,13 @@ public class ExtractionData {
 
     public static Utilisateur rechercheUtilisateurParID(int utilisateurID) throws SQLException {
 
-        Utilisateur utilisateur = new Utilisateur();
+        Utilisateur utilisateur = null;
         connexion.enableConnexion();
 
         try(Statement stmt = connexion.getConn().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             ResultSet result = stmt.executeQuery("SELECT * FROM utilisateur WHERE ID = " + utilisateurID)) {
             if(result.next()) {
+                utilisateur = new Utilisateur();
                 utilisateur.setId(result.getInt(1));
                 utilisateur.setNom(result.getString(2));
                 utilisateur.setPrenom(result.getString(3));
@@ -278,5 +287,37 @@ public class ExtractionData {
             return utilisateur;
         }
 
+    }
+
+    public static Article rechercheArticleParID(int articleID) throws SQLException {
+
+        Article article = null;
+        connexion.enableConnexion();
+
+        try(Statement stmt = connexion.getConn().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ResultSet result = stmt.executeQuery("SELECT * FROM article INNER JOIN rayon ON article.rayon_ID = rayon.ID WHERE article.ID = " + articleID)) {
+            if(result.next()) {
+                article = new Article();
+                article.setId(result.getInt(1));
+                article.setNom(result.getString(2));
+                article.setReference(result.getString(3));
+                article.setPrix(result.getDouble(4));
+                article.setQuantite(result.getInt(5));
+                article.setDescription(result.getString(6));
+                article.setPhoto(null);
+
+                Rayon rayon = new Rayon();
+                rayon.setId(result.getInt(9));
+                rayon.setNom(result.getString(10));
+
+                article.setRayon(rayon);
+            }
+        }
+        catch (Exception e){
+            Logger.getLogger(LOGGER).log(Level.WARNING,"",e);
+        }
+        connexion.stopConnexion();
+
+        return article;
     }
 }
