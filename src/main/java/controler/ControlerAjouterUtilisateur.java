@@ -106,10 +106,10 @@ public class ControlerAjouterUtilisateur {
     }
 
     public boolean testRegexNom(String nom){
-        return Pattern.matches("[A-Za-z \\-]++$", nom);
+        return Pattern.matches("[A-Za-z \\-']++$", nom);
     }
     public boolean testRegexPrenom(String prenom){
-        return Pattern.matches("[A-Za-z \\-]++$", prenom);
+        return Pattern.matches("[A-Za-z \\-']++$", prenom);
     }
     public boolean testRegexAge(String age){
         if(Pattern.matches("[0-9]++$", age)) {

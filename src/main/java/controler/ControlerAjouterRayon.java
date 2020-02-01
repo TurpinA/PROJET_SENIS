@@ -47,6 +47,6 @@ public class ControlerAjouterRayon {
     }
 
     public boolean testRegexNom(String nom){
-        return Pattern.matches("[A-Za-z0-9 \\-]++$", nom);
+        return Pattern.matches("[A-Za-z 0-9\\-']++$", nom);
     }
 }

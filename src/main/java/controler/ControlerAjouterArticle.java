@@ -80,7 +80,7 @@ public class ControlerAjouterArticle {
     }
 
     public boolean testRegexNom(String nom){
-        return Pattern.matches("[A-Za-z 0-9]++$", nom);
+        return Pattern.matches("[A-Za-z 0-9\\-']++$", nom);
     }
 
     public boolean testRegexReference(String reference){
