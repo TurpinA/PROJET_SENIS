@@ -18,4 +18,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 [![Alt text](https://raw.githubusercontent.com/TurpinA/PROJET_SENIS/master/MiniatureVideo.PNG)](https://www.youtube.com/watch?v=D8lV4GfCMI8)
 
+## Rapport SonarCloud
+
+[![Alt text](https://blog.cellenza.com/wp-content/uploads/2018/02/article-SonarCloud-Analysez-votre-projet-GitHub-via-VSTS.jpg)](https://sonarcloud.io/dashboard?id=projectsenis)
 
