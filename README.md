@@ -20,5 +20,5 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Rapport SonarCloud
 
-[![Alt text](https://blog.cellenza.com/wp-content/uploads/2018/02/article-SonarCloud-Analysez-votre-projet-GitHub-via-VSTS.jpg)](https://sonarcloud.io/dashboard?id=projectsenis)
+[![Alt text](https://github.com/TurpinA/PROJET_SENIS/blob/master/RapportSonarCloud.PNG?raw=true)](https://sonarcloud.io/dashboard?id=projectsenis)
 
