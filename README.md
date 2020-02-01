@@ -16,6 +16,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Vidéo de présentation de l'application
 
-![Alt text](https://raw.githubusercontent.com/TurpinA/PROJET_SENIS/master/MiniatureVideo.PNG)
+[![Alt text](https://raw.githubusercontent.com/TurpinA/PROJET_SENIS/master/MiniatureVideo.PNG)](https://www.youtube.com/watch?v=D8lV4GfCMI8)
 
 
