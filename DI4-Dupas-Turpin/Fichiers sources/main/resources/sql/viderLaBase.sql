@@ -1,0 +1,9 @@
+use baseTest;
+
+START TRANSACTION;
+
+TRUNCATE TABLE `article`;
+TRUNCATE TABLE `rayon`;
+TRUNCATE TABLE `utilisateur`;
+
+COMMIT;
