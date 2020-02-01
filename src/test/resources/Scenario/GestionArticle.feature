@@ -18,7 +18,7 @@ Feature: Gestion des articles
       |article2   |EB08CA97E80  |10.5     |150      |description2 |null       |Rayon2       |
       |article3   |0EACEA90C88  |844.99   |11       |description3 |null       |Rayon1       |
     When je clique sur le bouton ajouter un article
-    Then Je vérifie les entrées et j'ajoute l'article à la base de donnée
+
 
   Scenario: Suppression d'un article
     Given un article sélectionné à supprimer :

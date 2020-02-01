@@ -21,6 +21,16 @@
         <!-- Tests -->
         <cucumber.version>5.1.1</cucumber.version>
         <junit.version>4.13</junit.version>
+
+        <sonar.sources>pom.xml,src/main/java,src/main/resources,src/test/resources/Scenario</sonar.sources>
+
+        <sonar.projectKey>projectsenis</sonar.projectKey>
+        <sonar.organization>turpina2</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.login>8702d750611e2f8a7521333f91cd01314aeccb27</sonar.login>
+
+        <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+
     </properties>
 
     <dependencies>
@@ -90,6 +100,32 @@
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.6.1.1688</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.4</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             <!-- Maven plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -99,6 +135,7 @@
                     <release>11</release>
                 </configuration>
             </plugin>
+
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.2.0</version>
